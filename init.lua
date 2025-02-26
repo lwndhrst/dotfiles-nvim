@@ -22,4 +22,5 @@ require("keymaps").setup()
 require("autocmds")
 
 -- set colorscheme
-require("themes.rose_pine").setup()
+-- require("themes.rose_pine").setup()
+require("themes.rose_pine_edit").setup()
