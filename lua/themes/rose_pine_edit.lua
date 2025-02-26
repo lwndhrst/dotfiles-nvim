@@ -69,7 +69,7 @@ function M.setup()
 		},
 
 		highlight_groups = {
-			-- TelescopeBorder = { fg = "highlight_high", bg = "base" },
+			TelescopeBorder = { fg = "highlight_med", bg = "surface" },
 			-- TelescopeNormal = { bg = "base" },
 			-- TelescopePromptNormal = { bg = "base" },
 			-- TelescopeResultsNormal = { fg = "subtle", bg = "base" },
@@ -77,7 +77,7 @@ function M.setup()
 			TelescopeSelectionCaret = { fg = "rose", bg = "rose" },
 
 			-- NormalFloat = { bg = "base" },
-			-- FloatBorder = { fg = "overlay", bg = "surface" },
+			FloatBorder = { fg = "highlight_med", bg = "surface" },
 			FloatTitle = { fg = "foam", bg = "surface" },
 		},
 
