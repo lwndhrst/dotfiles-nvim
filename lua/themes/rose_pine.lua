@@ -80,7 +80,7 @@ function M.setup()
 			FloatBorder = { fg = "highlight_med", bg = "surface" },
 			FloatTitle = { fg = "foam", bg = "surface" },
 
-			Visual = { bg = "subtle" },
+			Visual = { bg = "text" },
 		},
 
 		before_highlight = function(group, highlight, palette)
