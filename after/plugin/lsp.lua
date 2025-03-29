@@ -32,17 +32,17 @@ lsp.omnisharp.setup(vim.tbl_extend("error", default_config, {
 }))
 
 -- gdscript
-local gdscript_addr = os.getenv("GDScript_Addr") or "127.0.0.1"
-local gdscript_port = os.getenv("GDScript_Port") or "6005"
-local gdscript_cmd = nil
-if vim.fn.has("win32") == 1 then
-	gdscript_cmd = { "ncat", gdscript_addr, gdscript_port }
-else
-	gdscript_cmd = vim.lsp.rpc.connect(gdscript_addr, gdscript_port)
-end
-lsp.gdscript.setup(vim.tbl_extend("error", default_config, {
-	cmd = gdscript_cmd,
-}))
+-- local gdscript_addr = os.getenv("GDScript_Addr") or "127.0.0.1"
+-- local gdscript_port = os.getenv("GDScript_Port") or "6005"
+-- local gdscript_cmd = nil
+-- if vim.fn.has("win32") == 1 then
+-- 	gdscript_cmd = { "ncat", gdscript_addr, gdscript_port }
+-- else
+-- 	gdscript_cmd = vim.lsp.rpc.connect(gdscript_addr, gdscript_port)
+-- end
+-- lsp.gdscript.setup(vim.tbl_extend("error", default_config, {
+-- 	cmd = gdscript_cmd,
+-- }))
 
 -- glsl
 lsp.glsl_analyzer.setup(default_config)
