@@ -56,12 +56,12 @@ function M.setup()
 
 		palette = {
 			main = {
-				base =           "#040e14",
-				surface =        "#0a161d",
-				overlay =        "#102028",
-				muted =          "#506471",
-				subtle =         "#708593",
-				text =           "#c8d4dc",
+				base           = "#040e14",
+				surface        = "#0a161d",
+				overlay        = "#102028",
+				muted          = "#506471",
+				subtle         = "#708593",
+				text           = "#c8d4dc",
 				highlight_low  = "#0f2129",
 				highlight_med  = "#203039",
 				highlight_high = "#495863",
