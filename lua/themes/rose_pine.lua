@@ -101,8 +101,20 @@ function M.setup()
 			--    
 			--    
 			--    
-			component_separators = { left = "", right = "" },
-			section_separators = { left = "", right = "" },
+			-- component_separators = { left = "", right = "" },
+			-- section_separators = { left = "", right = "" },
+
+			component_separators = { left = "|", right = "|" },
+			section_separators = { left = "", right = "" },
+		},
+
+		sections = {
+			lualine_a = { { "mode", separator = { left = "", right = "" } } },
+			lualine_b = { "branch", "diff", "diagnostics" },
+			lualine_c = { "filename" },
+			lualine_x = { "encoding", { "filetype", icons_enabled = false } },
+			lualine_y = { "progress" },
+			lualine_z = { { "location", separator = { left = "", right = "" } } },
 		},
 	})
 
