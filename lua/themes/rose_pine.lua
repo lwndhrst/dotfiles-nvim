@@ -14,32 +14,32 @@ local function lualine_theme()
 		normal = {
 			a = { bg = p.rose, fg = p.base, gui = "bold" },
 			b = { bg = p.overlay, fg = p.rose },
-			c = { bg = p.base, fg = p.text },
+			c = { bg = nil, fg = p.text },
 		},
 		insert = {
 			a = { bg = p.foam, fg = p.base, gui = "bold" },
 			b = { bg = p.overlay, fg = p.foam },
-			c = { bg = p.base, fg = p.text },
+			c = { bg = nil, fg = p.text },
 		},
 		visual = {
 			a = { bg = p.iris, fg = p.base, gui = "bold" },
 			b = { bg = p.overlay, fg = p.iris },
-			c = { bg = p.base, fg = p.text },
+			c = { bg = nil, fg = p.text },
 		},
 		replace = {
 			a = { bg = p.pine, fg = p.base, gui = "bold" },
 			b = { bg = p.overlay, fg = p.pine },
-			c = { bg = p.base, fg = p.text },
+			c = { bg = nil, fg = p.text },
 		},
 		command = {
 			a = { bg = p.love, fg = p.base, gui = "bold" },
 			b = { bg = p.overlay, fg = p.love },
-			c = { bg = p.base, fg = p.text },
+			c = { bg = nil, fg = p.text },
 		},
 		inactive = {
 			a = { bg = p.base, fg = p.muted, gui = "bold" },
 			b = { bg = p.overlay, fg = p.muted },
-			c = { bg = p.base, fg = p.muted },
+			c = { bg = nil, fg = p.muted },
 		},
 	}
 end
@@ -81,6 +81,8 @@ function M.setup()
 			FloatTitle = { fg = "foam", bg = "surface" },
 
 			Visual = { bg = "text" },
+
+			StatusLine = { bg = "base" },
 		},
 
 		before_highlight = function(group, highlight, palette)
