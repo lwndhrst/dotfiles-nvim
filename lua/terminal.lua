@@ -3,7 +3,7 @@ if vim.fn.has("Win32") == 1 then
 	vim.opt.shellcmdflag = "-Command"
 end
 
-local Terminal = {}
+local M = {}
 
 local function create_term(terminal)
 	vim.cmd("terminal")
@@ -11,23 +11,22 @@ local function create_term(terminal)
 	terminal.term_id = vim.b.terminal_job_id
 end
 
-function Terminal.open_term()
-	if not Terminal.buf_id or not Terminal.term_id then
-		create_term(Terminal)
-		vim.api.nvim_buf_set_option(Terminal.buf_id, "bufhidden", "hide")
+function M.open_term()
+	if not M.buf_id or not M.term_id then
+		create_term(M)
 	else
-		vim.api.nvim_set_current_buf(Terminal.buf_id)
+		vim.api.nvim_set_current_buf(M.buf_id)
 	end
 end
 
-function Terminal.send_cmd(cmd)
-	if not Terminal.buf_id or not Terminal.term_id then
-		create_term(Terminal)
+function M.send_cmd(cmd)
+	if not M.buf_id or not M.term_id then
+		create_term(M)
 	end
 
 	if cmd then
-		vim.api.nvim_chan_send(Terminal.term_id, cmd .. "\r\n")
+		vim.api.nvim_chan_send(M.term_id, cmd .. "\r\n")
 	end
 end
 
-return Terminal
+return M

@@ -83,6 +83,7 @@ function M.setup()
 			Visual = { bg = "text" },
 
 			StatusLine = { bg = "base" },
+			StatusLineTerm = { bg = "base" },
 		},
 
 		before_highlight = function(group, highlight, palette)
