@@ -3,6 +3,10 @@ if vim.fn.has("Win32") == 1 then
 	vim.opt.shellcmdflag = "-Command"
 end
 
+vim.api.nvim_create_autocmd("TermOpen", {
+	command = "setlocal number relativenumber",
+})
+
 local M = {}
 
 local function create_term(terminal)
