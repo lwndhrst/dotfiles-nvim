@@ -47,6 +47,9 @@ lsp.omnisharp.setup(vim.tbl_extend("error", default_config, {
 -- glsl
 lsp.glsl_analyzer.setup(default_config)
 
+-- shaderslang
+lsp.slangd.setup(default_config)
+
 -- lua
 lsp.lua_ls.setup(vim.tbl_extend("error", default_config, {
 	on_init = function(client)
