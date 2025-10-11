@@ -2,93 +2,60 @@
 -- https://github.com/williamboman/mason-lspconfig.nvim
 -- https://github.com/neovim/nvim-lspconfig
 
-local keymaps = require("keymaps")
-local lsp = require("lspconfig")
-
-local on_attach = function(client, buf_nr)
-	keymaps.lsp_buf_maps(buf_nr)
-end
-
-local default_config = {
-	on_attach = on_attach,
-	capabilities = require("cmp_nvim_lsp").default_capabilities(),
-	flags = { debounce_text_changes = 150 },
-}
-
 -- c/c++
-lsp.clangd.setup(vim.tbl_extend("error", default_config, {
-	cmd = { "clangd", "--header-insertion=never" },
-}))
-
--- c#
-local omnisharp_cmd = nil
-if vim.fn.has("win32") == 1 then
-	omnisharp_cmd = { "dotnet", "/path/to/omnisharp/OmniSharp.dll" }
-else
-	omnisharp_cmd = { "OmniSharp" }
-end
-lsp.omnisharp.setup(vim.tbl_extend("error", default_config, {
-	cmd = omnisharp_cmd,
-}))
-
--- gdscript
--- local gdscript_addr = os.getenv("GDScript_Addr") or "127.0.0.1"
--- local gdscript_port = os.getenv("GDScript_Port") or "6005"
--- local gdscript_cmd = nil
--- if vim.fn.has("win32") == 1 then
--- 	gdscript_cmd = { "ncat", gdscript_addr, gdscript_port }
--- else
--- 	gdscript_cmd = vim.lsp.rpc.connect(gdscript_addr, gdscript_port)
--- end
--- lsp.gdscript.setup(vim.tbl_extend("error", default_config, {
--- 	cmd = gdscript_cmd,
--- }))
+vim.lsp.enable("clangd")
 
 -- glsl
-lsp.glsl_analyzer.setup(default_config)
+vim.lsp.enable("glsl_analyzer")
 
--- shaderslang
-lsp.slangd.setup(default_config)
+-- slang
+vim.lsp.enable("slangd")
 
 -- lua
-lsp.lua_ls.setup(vim.tbl_extend("error", default_config, {
+vim.lsp.config('lua_ls', {
 	on_init = function(client)
-		local path = client.workspace_folders[1].name
-		if vim.loop.fs_stat(path .. "/.luarc.json") or vim.loop.fs_stat(path .. "/.luarc.jsonc") then
-			return
+		if client.workspace_folders then
+			local path = client.workspace_folders[1].name
+			if
+				path ~= vim.fn.stdpath('config')
+			then
+				return
+			end
 		end
 
-		client.config.settings.Lua = vim.tbl_deep_extend("force", client.config.settings.Lua, {
+		client.config.settings.Lua = vim.tbl_deep_extend('force', client.config.settings.Lua, {
 			runtime = {
-				version = "LuaJIT",
+				-- Tell the language server which version of Lua you're using (most
+				-- likely LuaJIT in the case of Neovim)
+				version = 'LuaJIT',
+
+				-- Tell the language server how to find Lua modules same way as Neovim
+				-- (see `:h lua-module-load`)
+				path = {
+					'lua/?.lua',
+					'lua/?/init.lua',
+				},
 			},
+
+			-- Make the server aware of Neovim runtime files
 			workspace = {
 				checkThirdParty = false,
 				library = {
-					vim.env.VIMRUNTIME,
-				},
-			},
+					vim.env.VIMRUNTIME
+				}
+			}
 		})
 	end,
+
 	settings = {
-		Lua = {},
-	},
-}))
+		Lua = {}
+	}
+})
+
+vim.lsp.enable("lua_ls")
 
 -- nix
-lsp.nil_ls.setup(default_config)
-
--- odin
-lsp.ols.setup(default_config)
-
--- python
-lsp.pyright.setup(default_config)
-
--- rust
-lsp.rust_analyzer.setup(default_config)
+vim.lsp.enable("nil_ls")
 
 -- tex
-lsp.texlab.setup(default_config)
-
--- zig
-lsp.zls.setup(default_config)
+vim.lsp.enable("texlab")

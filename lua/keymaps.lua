@@ -68,19 +68,8 @@ function M.setup()
 	end, opts)
 end
 
--- lsp on_attach
-function M.lsp_buf_maps(buf_nr)
-	local buf_opts = { noremap = true, silent = true, buffer = buf_nr }
-	map("n", "gd", vim.lsp.buf.definition, buf_opts)
-	map("n", "gi", vim.lsp.buf.implementation, buf_opts)
-	map("n", "K", vim.lsp.buf.hover, buf_opts)
-	map("n", "<SPACE>rn", vim.lsp.buf.rename, buf_opts)
-	map("n", "<SPACE>ca", vim.lsp.buf.code_action, buf_opts)
-end
-
 -- cmp
 function M.cmp_maps()
-	local luasnip = require("luasnip")
 	local cmp = require("cmp")
 	return {
 		["<C-d>"] = cmp.mapping.scroll_docs(-4),

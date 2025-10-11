@@ -5,6 +5,5 @@ require("conform").setup({
 		c = { "clang-format" },
 		cpp = { "clang-format" },
 		lua = { "stylua" },
-		odin = {},
 	},
 })
