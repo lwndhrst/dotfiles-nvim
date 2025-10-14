@@ -57,5 +57,8 @@ vim.lsp.enable("lua_ls")
 -- nix
 vim.lsp.enable("nil_ls")
 
+-- qml
+vim.lsp.enable("qmlls")
+
 -- tex
 vim.lsp.enable("texlab")
