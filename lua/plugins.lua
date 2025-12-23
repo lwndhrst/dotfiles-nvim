@@ -25,9 +25,23 @@ local plugins = {
 	"saadparwaiz1/cmp_luasnip",
 	"L3MON4D3/LuaSnip",
 	"nvim-treesitter/nvim-treesitter",
-	"williamboman/mason-lspconfig.nvim",
-	"williamboman/mason.nvim",
 	"stevearc/conform.nvim",
+
+	{
+		"williamboman/mason.nvim",
+		dependencies = { "williamboman/mason-lspconfig.nvim" },
+		config = function()
+			require("mason").setup()
+			require("mason-lspconfig").setup()
+		end,
+	},
+
+	"mfussenegger/nvim-dap",
+	"theHamsta/nvim-dap-virtual-text",
+	{
+		"rcarriga/nvim-dap-ui",
+		dependencies = { "nvim-neotest/nvim-nio" },
+	},
 
 	"nvim-telescope/telescope.nvim",
 	"stevearc/oil.nvim",

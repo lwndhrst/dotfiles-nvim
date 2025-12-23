@@ -3,9 +3,13 @@
 
 local M = {}
 
-local p = require("rose-pine.palette")
-
 local function lualine_theme()
+	local p = require("rose-pine.palette")
+	p.base = "#040e14"
+	p.surface = "#0a161d"
+	p.overlay = "#102028"
+	p.muted = "#506471"
+
 	return {
 		normal = {
 			a = { bg = p.rose, fg = p.base, gui = "bold" },
@@ -50,22 +54,40 @@ function M.setup()
 			transparency = false,
 		},
 
+		palette = {
+			main = {
+				base           = "#040e14",
+				surface        = "#0a161d",
+				overlay        = "#102028",
+				muted          = "#506471",
+				subtle         = "#708593",
+				text           = "#c8d4dc",
+				highlight_low  = "#0f2129",
+				highlight_med  = "#203039",
+				highlight_high = "#495863",
+			},
+		},
+
 		highlight_groups = {
-			-- 	TelescopeBorder = { fg = "highlight_high", bg = "base" },
-			-- 	TelescopeNormal = { bg = "base" },
-			-- 	TelescopePromptNormal = { bg = "base" },
-			-- 	TelescopeResultsNormal = { fg = "subtle", bg = "base" },
-			-- 	TelescopeSelection = { fg = "text", bg = "base" },
+			TelescopeBorder = { fg = "highlight_med", bg = "surface" },
+			-- TelescopeNormal = { bg = "base" },
+			-- TelescopePromptNormal = { bg = "base" },
+			-- TelescopeResultsNormal = { fg = "subtle", bg = "base" },
+			-- TelescopeSelection = { fg = "text", bg = "base" },
 			TelescopeSelectionCaret = { fg = "rose", bg = "rose" },
 
-			--  NormalFloat = { bg = "base" },
-			--  FloatBorder = { bg = "base" },
+			-- NormalFloat = { bg = "base" },
+			FloatBorder = { fg = "highlight_med", bg = "surface" },
 			FloatTitle = { fg = "foam", bg = "surface" },
+
+			Visual = { bg = "text" },
+
+			StatusLine = { bg = "base" },
+			StatusLineTerm = { bg = "base" },
 		},
 
 		before_highlight = function(group, highlight, palette)
 			if highlight.bg == palette.base then
-				-- highlight.bg = "#0c0b11"
 				highlight.bg = nil
 			end
 		end,
@@ -80,8 +102,35 @@ function M.setup()
 			--    
 			--    
 			--    
-			component_separators = { left = "", right = "" },
-			section_separators = { left = "", right = "" },
+			-- component_separators = { left = "", right = "" },
+			-- section_separators = { left = "", right = "" },
+
+			component_separators = { left = "|", right = "|" },
+			section_separators = { left = "", right = "" },
+		},
+
+		sections = {
+			lualine_a = {
+				{ "mode", separator = { left = "", right = "" } },
+			},
+			lualine_b = {
+				{ "branch" },
+				{ "diff" },
+				{ "diagnostics" },
+			},
+			lualine_c = {
+				{ "filename" },
+			},
+			lualine_x = {
+				{ "encoding" },
+				{ "filetype", icons_enabled = false },
+			},
+			lualine_y = {
+				{ "progress" },
+			},
+			lualine_z = {
+				{ "location", separator = { left = "", right = "" } },
+			},
 		},
 	})
 

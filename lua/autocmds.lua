@@ -1,9 +1,5 @@
 local autocmd = vim.api.nvim_create_autocmd
 
--- autocmd("TermOpen", {
--- 	command = "setlocal nonumber norelativenumber",
--- })
-
 -- only for uni computer graphics exercise
 -- autocmd({ "BufRead", "BufEnter" }, {
 -- 	pattern = {
