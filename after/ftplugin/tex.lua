@@ -1,6 +1,7 @@
 vim.bo.tabstop = 2
 vim.bo.shiftwidth = 2
 vim.bo.textwidth = 80
+vim.bo.expandtab = false
 
 -- extra latex keymaps
 local buf_nr = vim.api.nvim_get_current_buf()
