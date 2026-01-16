@@ -3,6 +3,7 @@ vim.api.nvim_create_autocmd('FileType', {
 		'c',
 		'cmake',
 		'cpp',
+		'glsl',
 		'lua',
 		'md',
 		'nix',
