@@ -57,6 +57,8 @@ local plugins = {
 	"folke/todo-comments.nvim",
 
 	"rose-pine/neovim",
+
+	"lervag/vimtex"
 }
 
 require("lazy").setup(plugins)
