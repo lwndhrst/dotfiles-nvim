@@ -20,5 +20,6 @@ map("n", "<SPACE>ru", function()
 	vim.cmd([[%s/\\ss /ß/eg]])
 end, opts)
 
--- toggle german spell checking
-map("n", "<SPACE>sp", ":setlocal spell! spelllang=de<CR>", opts)
+-- toggle spell checking
+map("n", "<SPACE>spg", ":setlocal spell! spelllang=de<CR>", opts)
+map("n", "<SPACE>spe", ":setlocal spell! spelllang=en_us<CR>", opts)
