@@ -1,8 +1,13 @@
--- https://github.com/nvim-treesitter/nvim-treesitter
-
-require("nvim-treesitter.configs").setup({
-	highlight = {
-		enable = true,
-		disable = { "latex" },
+vim.api.nvim_create_autocmd('FileType', {
+	pattern = {
+		'c',
+		'cmake',
+		'cpp',
+		'glsl',
+		'lua',
+		'md',
+		'nix',
 	},
+
+	callback = function() vim.treesitter.start() end,
 })
