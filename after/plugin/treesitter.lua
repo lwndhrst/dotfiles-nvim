@@ -7,6 +7,7 @@ vim.api.nvim_create_autocmd('FileType', {
 		'lua',
 		'md',
 		'nix',
+		'python',
 	},
 
 	callback = function() vim.treesitter.start() end,
