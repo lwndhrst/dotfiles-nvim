@@ -10,7 +10,7 @@ vim.lsp.enable("glsl_analyzer")
 vim.lsp.enable("slangd")
 
 -- lua
-vim.lsp.config('lua_ls', {
+vim.lsp.config("lua_ls", {
 	on_init = function(client)
 		if client.workspace_folders then
 			local path = client.workspace_folders[1].name
@@ -60,3 +60,16 @@ vim.lsp.enable("qmlls")
 
 -- tex
 vim.lsp.enable("texlab")
+
+-- python
+vim.lsp.config("basedpyright", {
+	settings = {
+		basedpyright = {
+			analysis = {
+				typeCheckingMode = "basic",
+			},
+		},
+	},
+})
+
+vim.lsp.enable("basedpyright")
